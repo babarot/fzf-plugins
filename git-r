@@ -1,0 +1,10 @@
+#!/bin/bash
+
+git diff \
+    --name-only \
+    "origin/master...$(git rev-parse --abbrev-ref HEAD)" \
+    | fzf \
+    --ansi \
+    --preview="git diff --color origin/master {}" \
+    --preview-window=right:60% \
+    --bind "enter:execute(vim -p {} >/dev/tty </dev/tty)"
