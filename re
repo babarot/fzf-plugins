@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 FZF_DEFAULT_OPTS=
 FZF_DEFAULT_OPTS+=" --bind 'ctrl-i:toggle-out'"
@@ -13,6 +13,10 @@ is_git_repo() {
 
 get_git_branch() {
     is_git_repo && git rev-parse --abbrev-ref HEAD
+}
+
+get_lines() {
+    tput lines
 }
 
 get_cursor_pos() {
@@ -106,7 +110,7 @@ main() {
         size="up:70%"
     fi
 
-    if (( $(get_cursor_pos) < ($(tput lines)/2) )); then
+    if (( $(get_cursor_pos) < ($(get_lines)/2) )); then
         opts+=("--reverse")
     fi
 
