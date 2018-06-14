@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+root="${0:A:h}"
+plugins_dir="${root}/plugins"
+
+plugin_name="${1}"
+shift
+zsh "${plugins_dir}/${plugin_name}.zsh" ${1:+"${@}"}
